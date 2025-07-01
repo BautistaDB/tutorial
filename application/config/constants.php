@@ -1,6 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+define('BASE_URL', 'http://localhost/tutorial/index.php/');
 /*
 |--------------------------------------------------------------------------
 | Display Debug backtrace

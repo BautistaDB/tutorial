@@ -11,5 +11,6 @@
     <textarea name="text"></textarea><br />
 
     <input type="submit" name="submit" value="Create news item" />
+	<button><a href="<?php echo site_url('/news'); ?>">Back to List News</a></button>
 
 </form>
