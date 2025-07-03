@@ -23,7 +23,7 @@ class News extends CI_Controller {
 				$offset = ($pagina_actual - 1) * $cantidad_por_pagina;
 
 				$total_news = $this->news_model->count_news();
-				$total_paginas = ($total_news / $cantidad_por_pagina);
+				$total_paginas = ceil($total_news / $cantidad_por_pagina);
 
 				$data['news'] = $this->news_model->get_news_paginated($cantidad_por_pagina, $offset);
 
