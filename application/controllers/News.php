@@ -24,7 +24,13 @@ class News extends CI_Controller {
 
 				$total_news = $this->news_model->count_news();
 				$total_paginas = ceil($total_news / $cantidad_por_pagina);
-
+				
+				if($pagina_actual > $total_paginas) {
+					show_404();
+					return;
+				}
+				
+				
 				$data['news'] = $this->news_model->get_news_paginated($cantidad_por_pagina, $offset);
 
 				$data['pagina_actual'] = $pagina_actual;
