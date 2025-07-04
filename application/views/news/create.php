@@ -8,7 +8,9 @@
     <input type="text" name="title" /><br />
 
     <label for="text">Text</label>
-    <textarea name="text"></textarea><br />
+    <textarea name="text"></textarea><br/>
+
+	<label for="text">Autor: <?php echo $this->session->userdata('username') ?> </label>
 
     <input type="submit" name="submit" value="Create news item" />
 	<button><a href="<?php echo site_url('/news'); ?>">Back to List News</a></button>

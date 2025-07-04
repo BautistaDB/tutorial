@@ -25,6 +25,7 @@ class News_model extends CI_Model {
 
 			$title = $this->input->post('title', TRUE);
 			$text = $this->input->post('text', TRUE);
+			$username = $this->input->post('username');
 
 				if (empty($title) || empty($text)) {
 					return false;
@@ -35,7 +36,8 @@ class News_model extends CI_Model {
 			$data = [
 				'title' => $title,
 				'slug'  => $slug,
-				'text'  => $text
+				'text'  => $text,
+				'users_id' => $username
 			];
 
 			return $this->db->insert('news', $data);
