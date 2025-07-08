@@ -96,9 +96,3 @@ class Users extends CI_Controller
 		redirect('users/login');
 	}
 }	
-
-
-
-// Ejemplo de usuarios y contraseñas:
-//pepito    - diego
-//pepito123 - diego123
