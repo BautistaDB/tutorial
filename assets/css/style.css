@@ -1,0 +1,10 @@
+.vote-button.click-up {
+  color: green;
+	background-color: #e0ffe0;
+}
+
+.vote-button.click-down {
+  color: red;
+	background-color: #ffe0e0;
+}
+

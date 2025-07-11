@@ -4,6 +4,8 @@
  * @property News_model $news_model
  * @property form_validation $form_validation
  * @property input $input 
+ * @property session $session
+ * 
 */
 class News extends CI_Controller {
 
@@ -56,6 +58,12 @@ class News extends CI_Controller {
 
 				$data['title'] = $data['news_item']['title'];
 
+				$idNoticia = $data['news_item']['id'];
+
+    			$data['upvotes'] = $this->news_model->contar_upvotes($idNoticia);
+
+    			$data['downvotes'] = $this->news_model->contar_downvotes($idNoticia);
+
 				$this->load->view('templates/header', $data);
 				$this->load->view('news/view', $data);
 				$this->load->view('templates/footer');
@@ -90,4 +98,37 @@ class News extends CI_Controller {
 			}
 			}
 
+
+		public function vote($idNoticia)
+    {
+
+		$id_user = $this->session->userdata('user_id');
+
+		if (!$id_user) {
+			http_response_code(401); 
+			echo json_encode(['error' => 'Debes iniciar sesión para votar']);
+			return;
+    }
+
+        $json = @file_get_contents('php://input');
+		$data = json_decode($json, true);
+        $value = (int)$data['value'];
+
+        $result = $this->news_model->guardar_voto($id_user, $idNoticia, $value);
+
+		if($result){
+			echo json_encode([
+				'mensaje' => "voto con exito",
+				'status' => $result,
+				'id_news' => $idNoticia,
+				'valor' => $value
+			]);
+		}else {
+			http_response_code(500);
+			echo json_encode(['error' => 'Error al guardar el voto']);
+		}
+    }
+
+
 }
+

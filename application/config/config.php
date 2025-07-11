@@ -74,7 +74,7 @@ assert_options(ASSERT_CALLBACK, 'my_assert_handler');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost/tutorial/';
+$config['base_url'] = 'http://localhost/' . URL_PREFIX;
 
 /*
 |--------------------------------------------------------------------------
